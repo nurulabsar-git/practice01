@@ -1,0 +1,25 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.background-item{
+    background-color: #F6F5FA;
+}
+.common-division{
+    background-color: #fff;
+}
+
+.first-division {
+    padding: 15px 20px;
+	margin-bottom: 20px;
+    border-radius: 15px;
+
+}
+
+.first-division img{
+width: 100px;
+}
+
+.status{
+    text-align: right;
+}
