@@ -20,11 +20,11 @@
            <div class="col-sm-5 d-flex align-items-center justify-content-center">
             <div>
             <button id="decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
-            <input id="value-area" type="text" class="form-control text-center" value="1">
+            <input id="cover-value" type="text" class="form-control text-center" value="1">
             <button id="increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
             </div>
 
-            <h5 class="m-5">$59</h5>
+            <h5 class="m-5">$<span id="totalCoverValue">59</span></h5>
             <img src="images/remove.png" alt="">
         </div>
 
@@ -38,12 +38,12 @@
                </div>
             <div class="col-sm-5 d-flex align-items-center justify-content-center">
                 <div>
-                <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                <input type="text" class="form-control text-center" value="1">
-                <button class="btn btn-default"><i class="fas fa-plus"></i></buttonclass=>
+                <button onclick="shortlyControlPhoneArea(false)" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                <input  id="phone-value"  type="text" class="form-control text-center" value="1">
+                <button onclick="shortlyControlPhoneArea(true)" class="btn btn-default"><i class="fas fa-plus"></i></buttonclass=>
                 </div>
                
-                <h5 class="m-5">$59</h5>
+                <h5 class="m-5">$<span id="totalPhoneValue">1259</span></h5>
                 <img src="images/remove.png" alt="">
             </div>
     
@@ -76,12 +76,65 @@
         <script>
             const BtnIncrease = document.getElementById("increase");
             BtnIncrease.addEventListener('click', function(){
-             const increaseArea = document.getElementById("value-area");
-             const increaseConvert = parseFloat(increaseArea.value);
-            const updateIncrease = increaseConvert + 1;
-            increaseArea.value = updateIncrease;
+            //  const increaseArea = document.getElementById("cover-value");
+            //  const increaseConvert = parseFloat(increaseArea.value);
+            //  const updateIncrease = increaseConvert + 1;
+            // increaseArea.value = updateIncrease;
+            // const totalPrice = updateIncrease*59;
+            // document.getElementById("totalCoverValue").innerText = totalPrice;
+            shortlyControl(true);
+
+            });
+
+            const BtnDecrease = document.getElementById("decrease");
+            BtnDecrease.addEventListener('click', function(){
+            //  const increaseArea = document.getElementById("cover-value");
+            //  const increaseConvert = parseFloat(increaseArea.value);
+            //  const updateIncrease = increaseConvert - 1;
+            // increaseArea.value = updateIncrease;
+            // const totalPrice = updateIncrease*59;
+            // document.getElementById("totalCoverValue").innerText = totalPrice;
+            shortlyControl(false);
             
-            })
+            });
+
+          function  shortlyControl(isUpdate){
+            const increaseArea = document.getElementById("cover-value");
+             const increaseConvert = parseFloat(increaseArea.value);
+            //  const updateIncrease = increaseConvert + 1;
+            let updateIncrease = increaseConvert;
+            if(isUpdate == true){
+                updateIncrease = increaseConvert + 1;
+            }
+
+            if(isUpdate == false && increaseConvert>0){
+                updateIncrease = increaseConvert - 1;
+            }
+
+            increaseArea.value = updateIncrease;
+            const totalPrice = updateIncrease*59;
+            document.getElementById("totalCoverValue").innerText = totalPrice;
+          }
+
+
+          function  shortlyControlPhoneArea(isPhoneUpdate){
+            const increasePhoneArea = document.getElementById("phone-value");
+             const increasePhoneConvert = parseFloat(increasePhoneArea.value);
+            //  const updateIncrease = increaseConvert + 1;
+            let updatePhoneIncrease =  increasePhoneConvert;
+            if(isPhoneUpdate == true){
+                updatePhoneIncrease =  increasePhoneConvert + 1;
+            }
+
+            if(isPhoneUpdate == false &&  increasePhoneConvert>0){
+                updatePhoneIncrease = increasePhoneConvert - 1;
+            }
+
+            increasePhoneArea.value = updatePhoneIncrease;
+            const totalPhonePrice = updatePhoneIncrease*1259;
+            document.getElementById("totalPhoneValue").innerText = totalPhonePrice;
+          }
+        
         </script>
 
 
